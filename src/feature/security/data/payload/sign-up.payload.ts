@@ -1,5 +1,7 @@
 import { SignInPayload } from './sign-in.payload';
+import { ApiProperty } from '@nestjs/swagger';
 
-export class SignUpModule extends SignInPayload{
+export class SignUpPayload extends SignInPayload{
+  @ApiProperty()
   mail: string;
 }
