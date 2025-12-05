@@ -33,3 +33,4 @@ export class SignInPage {
     this.usernameConfig = { ...this.usernameConfig, label: 'Nouvel Email' };
   }
 }
+// oui
