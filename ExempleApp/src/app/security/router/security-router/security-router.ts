@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import {Component,inject, OnInit} from '@angular/core';
+import {MemberService} from '../../../feature/member/service/member.service';
+import {tap} from 'rxjs';
 
 @Component({
   selector: 'app-security-router',
@@ -7,6 +9,17 @@ import { Component } from '@angular/core';
   standalone: true,
   styleUrl: './security-router.scss',
 })
-export class SecurityRouter {
 
+export class SecurityRouter implements OnInit {
+  memberService:MemberService = inject(MemberService);
+
+  ngOnInit(): void {
+    this.memberService.getList() // Observable<any>
+      .pipe(
+        tap((profiles: any[]) => {
+      this.profiles$.set(profiles);
+    })
+  )
+  .subscribe();
+  }
 }
