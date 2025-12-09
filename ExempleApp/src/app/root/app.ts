@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
-import {SignInPage} from '../security/page/sign-in-page/sign-in-page';
+
+import {RouterOutlet} from '@angular/router';
 
 
 @Component({
   selector: 'app-root',
-  imports: [SignInPage],
+  imports: [RouterOutlet],
   templateUrl: './app.html',
   standalone: true,
   styleUrl: './app.scss'
