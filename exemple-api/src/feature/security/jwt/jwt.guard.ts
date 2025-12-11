@@ -29,7 +29,6 @@ export class JwtGuard implements CanActivate {
     //Here we check if route have @Public decorator;
     const isPublic = this.reflector.getAllAndOverride<boolean>(IS_PUBLIC_KEY, [context.getHandler(), context.getClass()]);
     const isAdmin = this.reflector.getAllAndOverride<boolean>(IS_ADMIN, [context.getHandler(), context.getClass()]);
-
     return isPublic ? true : this.validateToken(context.switchToHttp().getRequest(), isAdmin);
   }
 
