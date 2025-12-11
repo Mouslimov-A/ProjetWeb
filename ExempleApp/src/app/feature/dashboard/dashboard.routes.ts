@@ -6,7 +6,7 @@ export const dashboardRoutes: Routes= [
     loadComponent: ()=> import('./router').then (p =>p.DashboardRouter),
     children: [
       {
-        path: '',
+        path: 'home',
         loadComponent: ()=> import('./page').then (p =>p.DashboardHomePage)
       },
       {

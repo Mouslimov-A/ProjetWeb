@@ -28,10 +28,15 @@ export class TokenService {
 
   private getToken(): Token {
     const str = localStorage.getItem(environment.TOKEN_KEY);
-    return !isNil(str) ? JSON.parse(str) as Token : this.getEmpty();
+
+    if (!isNil(str)) {
+      const parsedToken = JSON.parse(str);
+      return { ...parsedToken, isEmpty: false } as Token;
+    }
+    return this.getEmpty();
   }
 
   private getEmpty(): Token {
-    return {token: '', refreshToken: ''};
+    return { token: '', refreshToken: '', isEmpty: true };
   }
 }

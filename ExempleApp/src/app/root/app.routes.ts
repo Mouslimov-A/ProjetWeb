@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 import {dashboardRoutes} from '../feature/dashboard';
 import {DashboardGuard} from '../feature/dashboard/dashboard.guard';
+import {AppNode} from '../shared/ui/app.node';
+
 
 export const routes: Routes = [
   {
