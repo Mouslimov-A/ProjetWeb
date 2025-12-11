@@ -9,13 +9,14 @@ import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
 
 import {provideHttpClient, withInterceptors} from '@angular/common/http';
-import { httpInterceptor } from '../shared/api/interceptor';
+import {HttpInterceptor} from '../shared/api';
+
 
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptors( [httpInterceptor]))
+    provideHttpClient(withInterceptors( [HttpInterceptor]))
   ],
 };
