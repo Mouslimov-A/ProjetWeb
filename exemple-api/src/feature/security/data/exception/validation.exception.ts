@@ -9,7 +9,9 @@ export class ValidationException extends HttpException {
   constructor(errors: ValidationError[]) {
     super({
       code: ApiCodeResponse.PAYLOAD_IS_NOT_VALID,
-      data: errors, result: false }, 499);
+      data: errors,
+      result: false
+    }, 499);
   }
 }
 

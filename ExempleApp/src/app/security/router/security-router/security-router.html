@@ -1,2 +1,3 @@
-{{ sign$()}}
-{{ comp$()}}
+@for (item of profiles$(); track $index) {
+  {{ item | json }}
+}

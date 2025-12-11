@@ -4,16 +4,18 @@ import {
   provideBrowserGlobalErrorListeners,
   provideZoneChangeDetection
 } from '@angular/core';
-import { provideRouter, withComponentInputBinding } from '@angular/router';
 
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { routes } from './app.routes';
-import { HttpClientModule } from '@angular/common/http';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
+import { httpInterceptor } from '../shared/api/interceptor';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes, withComponentInputBinding()),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptors( [httpInterceptor]))
   ],
 };

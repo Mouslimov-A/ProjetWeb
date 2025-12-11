@@ -2,21 +2,25 @@ import { Controller, Delete, Get, Patch, Post, Put } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Public } from '@common/config/metadata';
+import { AppControllerHelloWorld } from './app.swagger';
 
 
 @ApiTags('Route de base')
-@Controller()
+@Controller('main')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
 
-  @ApiOperation({
-    summary: 'Opération HelloWorld()',
-    description: 'Cette opération est celle de base',
-  })
+  @Public()
+  @ApiOperation(AppControllerHelloWorld)
+  @Get('hello-world')
+  getHello(): string {
+    return this.appService.getHello();
+  }
+
   @Public()
   @Get()
-  getHello(): string {
+  getHelloV2(): string {
     return this.appService.getHello();
   }
 

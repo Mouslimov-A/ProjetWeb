@@ -1,25 +1,29 @@
-import {Component,inject, OnInit} from '@angular/core';
+import {Component, inject, OnInit, signal, WritableSignal} from '@angular/core';
 import {MemberService} from '../../../feature/member/service/member.service';
 import {tap} from 'rxjs';
+import {JsonPipe} from '@angular/common';
 
 @Component({
   selector: 'app-security-router',
-  imports: [],
+  imports: [
+    JsonPipe
+  ],
   templateUrl: './security-router.html',
   standalone: true,
   styleUrl: './security-router.scss',
 })
 
 export class SecurityRouter implements OnInit {
-  memberService:MemberService = inject(MemberService);
+  memberService: MemberService = inject(MemberService);
+  profiles$: WritableSignal<any[]> = signal([]);
 
   ngOnInit(): void {
     this.memberService.getList() // Observable<any>
       .pipe(
-        tap((profiles: any[]) => {
-      this.profiles$.set(profiles);
-    })
-  )
-  .subscribe();
+        tap((profiles: any[])=> {
+          this.profiles$.set(profiles);
+        })
+      )
+      .subscribe();
   }
 }

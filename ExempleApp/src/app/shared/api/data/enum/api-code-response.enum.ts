@@ -1,0 +1,17 @@
+export enum ApiCodeResponse {
+  TEST = 'api.result.test',
+  CREDENTIAL_DELETE_ERROR = 'api.security.credential-delete.error',
+  CREDENTIAL_DELETE_SUCCESS = 'api.security.credential-delete.error',
+  TOKEN_GEN_ERROR = 'api.security.token-gen.error',
+  USER_ALREADY_EXIST = 'api.security.user-already-exist',
+  SIGNUP_ERROR = 'api.security.sign-up.error',
+  SIGNUP_SUCCESS = 'api.security.sign-up.success',
+  TOKEN_EXPIRED = 'api.security.token-expired',
+  USER_NOT_FOUND = 'api.security.user-not-found',
+  NO_TOKEN_FOUNDED = 'api.security.token-not-found',
+  PAYLOAD_IS_NOT_VALID = 'api.common.param-is-missing',
+  USERNAME_IS_NOT_EMPTY = 'api.signin-param-username-is-missing',
+  PASSWORD_IS_NOT_EMPTY = 'api.signin-param-password-is-missing',
+  COMMON_SUCCESS = 'api.common.success',
+  ACCOUNT_SIGN_IN_SUCCESS = 'api.signin.success',
+}
