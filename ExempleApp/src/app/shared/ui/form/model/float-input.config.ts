@@ -1,5 +1,7 @@
+import {FormControl} from '@angular/forms';
+
 export interface FloatInputConfig {
   type: string;
   label: string;
-  defaultValue: string;
+  formControl: FormControl;
 }

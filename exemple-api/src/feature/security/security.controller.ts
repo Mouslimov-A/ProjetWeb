@@ -16,7 +16,7 @@ export class SecurityController { constructor(private readonly service: Security
 }
 
   @Public()
-  @Post('signin') //ACCOUNT_SIGN_IN_SUCCESS
+  @Post('sign-in') //ACCOUNT_SIGN_IN_SUCCESS
   public SignIn(@Body() payload: SignInPayload) {
     return this.service.signIn(payload);
   }
