@@ -1,6 +1,6 @@
 import {Routes} from '@angular/router';
 
-export const dashboardRoutes: Routes= [
+export const DashboardRoutes: Routes= [
   {
     path: '',
     loadComponent: ()=> import('./router').then (p =>p.DashboardRouter),

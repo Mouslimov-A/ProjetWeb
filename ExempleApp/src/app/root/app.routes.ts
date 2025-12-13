@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
-import {dashboardRoutes} from '../feature/dashboard';
-import {DashboardGuard} from '../feature/dashboard/dashboard.guard';
-import {AppNode} from '../shared/ui/app.node';
+
 
 
 export const routes: Routes = [
@@ -10,18 +8,15 @@ export const routes: Routes = [
     redirectTo: 'public',
     pathMatch: 'full'
   },
-  // http://localhost:4200/sign-in
   {
     path: 'public',
     loadChildren: ()=>
-      import('../security/security.routes').then(p => p.SecurityRoutes)
+      import('../security/security.routes').then(r => r.SecurityRoutes)
   },
-  // http://localhost:4200/dashboard
   {
     path: 'dashboard',
-    canActivate: [DashboardGuard()],
     loadChildren: ()=>
-      import('../feature/dashboard/page').then(p => dashboardRoutes)
+      import('../feature/dashboard/').then(r => r.DashboardRoutes)
   },
 
   {

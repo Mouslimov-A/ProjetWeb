@@ -7,10 +7,18 @@ export const SecurityRoutes: Routes= [
     children: [
       {
         path: '',
-        loadComponent: ()=> import('./page').then (p =>p.SignInPage)
+        redirectTo: 'signin',
+        pathMatch: 'full',
+      },
+      {
+        path: 'signin',
+        loadComponent: ()=> import('./page').then (c =>c.SignInPage)
+      },
+      {
+        path: 'signup',
+        loadComponent: ()=> import('./page').then (c =>c.SignUpPage)
       }
+
     ]
   },
-
-
 ]

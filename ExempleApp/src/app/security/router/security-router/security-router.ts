@@ -7,7 +7,6 @@ import {RouterOutlet} from '@angular/router';
 @Component({
   selector: 'app-security-router',
   imports: [
-    JsonPipe,
     RouterOutlet
   ],
   templateUrl: './security-router.html',
@@ -15,17 +14,17 @@ import {RouterOutlet} from '@angular/router';
   styleUrl: './security-router.scss',
 })
 
-export class SecurityRouter implements OnInit {
-  memberService: MemberService = inject(MemberService);
-  profiles$: WritableSignal<any[]> = signal([]);
-
-  ngOnInit(): void {
-    this.memberService.getList() // Observable<any>
-      .pipe(
-        tap((profiles: any[])=> {
-          this.profiles$.set(profiles);
-        })
-      )
-      .subscribe();
-  }
+export class SecurityRouter {
+  // memberService: MemberService = inject(MemberService);
+  // profiles$: WritableSignal<any[]> = signal([]);
+  //
+  // ngOnInit(): void {
+  //   this.memberService.getList() // Observable<any>
+  //     .pipe(
+  //       tap((profiles: any[])=> {
+  //         this.profiles$.set(profiles);
+  //       })
+  //     )
+  //     .subscribe();
+  // }
 }

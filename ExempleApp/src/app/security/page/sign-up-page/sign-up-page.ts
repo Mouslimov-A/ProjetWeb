@@ -1,37 +1,34 @@
 import {Component, inject, signal, WritableSignal} from '@angular/core';
-
-import {FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
-import {FloatInput} from '../../../shared/ui/form/component/float-input/float-input';
-import {SignInPayload} from '../../data';
+import {FloatInput} from "../../../shared/ui/form/component/float-input/float-input";
+import {FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {submit} from '@angular/forms/signals';
+import {SecurityService} from '../../service/security.service';
+import {SignUpPayload} from '../../data';
 import {SecurityFormUtil} from '../../util';
 import {FloatInputConfig} from '../../../shared/ui/form/model/float-input.config';
-
 import {FormError} from '../../../shared/ui/form/type';
 import {handleFormError} from '../../../shared/ui/form/util';
-import {Observable} from 'rxjs';
-import {SecurityService} from '../../service/security.service';
 import {RouterLink} from '@angular/router';
 
-
 @Component({
-  selector: 'app-sign-in-page',
+  selector: 'app-sign-up-page',
   imports: [
     FloatInput,
     ReactiveFormsModule,
-    FormsModule,
     RouterLink
   ],
-  templateUrl: './sign-in-page.html',
-  standalone: true,
-  styleUrl: './sign-in-page.scss',
+  templateUrl: './sign-up-page.html',
+  styleUrl: './sign-up-page.scss',
 })
-export class SignInPage {
+export class SignUpPage {
   private readonly securityService = inject(SecurityService);
 
-  payload:SignInPayload = SecurityFormUtil.getDefaultSignInPayload();
-  formGroup: FormGroup = SecurityFormUtil.getSignInFormGroup();
+
+  payload:SignUpPayload = SecurityFormUtil.getDefaultSignUpPayload();
+  formGroup: FormGroup = SecurityFormUtil.getSignUpFormGroup();
 
   usernameFloatInputConfig:FloatInputConfig = SecurityFormUtil.getUsernameFloatInputConfig(this.formGroup);
+  mailFloatInputConfig:FloatInputConfig = SecurityFormUtil.getMailFloatInputConfig(this.formGroup);
   passwordFloatInputConfig:FloatInputConfig = SecurityFormUtil.getPasswordFloatInputConfig(this.formGroup);
 
   errors$: WritableSignal<FormError[]> = signal([]);
@@ -45,9 +42,7 @@ export class SignInPage {
       console.log('erreur',this.formGroup.value);
       return;
     }
-    this.securityService.signIn(this.formGroup.value)
+    this.securityService.signUp(this.formGroup.value)
       .subscribe((data) => console.log('data', data));
   }
-
 }
-

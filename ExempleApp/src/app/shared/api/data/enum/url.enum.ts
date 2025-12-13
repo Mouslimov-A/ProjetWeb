@@ -8,7 +8,12 @@ export enum APIURIPublic {
   ROOT = '',
   MAIN_HELLO_WORLD = 'main/hello-world',
   MAIN_HELLO_WORLD2 = 'main',
-  REFRESH = 'account/refresh'
+  REFRESH = 'account/refresh',
+  SIGN_IN = 'account/sign-in',
+  SIGN_UP = 'account/signup',
+}
+export enum ApiURI{
+  ME = 'account/me'
 }
 
 export const publicRoutes = (): string[] => {

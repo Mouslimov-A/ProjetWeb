@@ -1,11 +1,17 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryColumn } from 'typeorm';
-import { ulid } from 'ulid';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 import { Credentials } from './credentials.entity';
 
 @Entity()
 export class Token {
-  @PrimaryColumn('varchar', { length: 26, default: () => `'${ulid()}'` })
+  @PrimaryGeneratedColumn("uuid")
   token_id: string;
+
   @Column({ nullable: false })
   token: string;
   @Column({ nullable: false })

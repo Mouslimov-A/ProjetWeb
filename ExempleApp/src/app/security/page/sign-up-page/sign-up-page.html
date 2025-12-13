@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <h1>Welcome back</h1>
+  <h1>SIGN UP</h1>
   @if (errors$().length > 0) {
     @for (error of errors$(); track $index) {
       <p>{{ error.control }} {{ error.error }} ('{{ error.value }}')</p>
@@ -8,10 +8,10 @@
   <form [formGroup]="formGroup">
     <div class="form">
       <app-float-input [config]="usernameFloatInputConfig"/>
+      <app-float-input [config]="mailFloatInputConfig"/>
       <app-float-input [config]="passwordFloatInputConfig"/>
     </div>
   </form>
   <button (click)="submit()">Envoyer</button>
-
-  <button routerLink="/public/signup">s'inscrire</button>
+  <button routerLink="/public/signin">se connecter</button>
 </div>

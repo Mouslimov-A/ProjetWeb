@@ -1,7 +1,9 @@
 <header>Dashboard</header>
+<h3>profile : {{ account().username }}</h3>
 
 <nav>
   <ul>
+    <button (click)="onLogout()">Logout</button>
     <li><a [routerLink]="'product'">Product</a></li>
     <li><a [routerLink]="'member'">Member</a></li>
   </ul>

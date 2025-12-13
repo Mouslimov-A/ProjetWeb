@@ -8,7 +8,7 @@ export class SecurityFormUtil {
   }
 
   static getDefaultSignUpPayload(): SignUpPayload {
-    return {...SecurityFormUtil.getDefaultSignUpPayload(), mail: ''}
+    return {username:'', password:'', mail: ''}
   }
 
   static getDefaultUsernameFormControl(username: string = ''): FormControl {
@@ -55,11 +55,11 @@ export class SecurityFormUtil {
       formControl: formGroup.get('password')! as FormControl
     }
   }
-  static getMailFloatInputConfig(formControl: FormControl): FloatInputConfig {
+  static getMailFloatInputConfig(formControl: FormGroup): FloatInputConfig {
     return {
       type: 'text',
       label: 'mail',
-      formControl: formControl
+      formControl: formControl.get('mail')! as FormControl
     }
   }
 }
