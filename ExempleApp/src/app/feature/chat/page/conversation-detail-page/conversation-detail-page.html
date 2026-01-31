@@ -1,0 +1,19 @@
+<div class="messages-container">
+  @for (message of messageList(); track message.messageId) {
+    <div class="message" [class.my-message]="isMyMessage(message)">
+      <h4>{{ message.sender.username }}</h4>
+      <p>{{ message.content }}</p>
+      <small>{{ message.createdAt | date:'short' }}</small>
+    </div>
+  } @empty {
+    <p>Aucun message</p>
+  }
+</div>
+
+<div class="send-message">
+  <textarea
+    [(ngModel)]="newMessageContent"
+    placeholder="Écrire un message...">
+  </textarea>
+  <button (click)="onSendMessage()">Envoyer</button>
+</div>

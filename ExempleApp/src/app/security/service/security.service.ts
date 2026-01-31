@@ -13,6 +13,7 @@ import {Credential} from '../data/credential.business';
 export class SecurityService {
   private readonly api: ApiService = inject(ApiService);
   private readonly tokenService: TokenService = inject(TokenService);
+
   isAuthenticated$: Signal<boolean> = computed(() => !this.tokenService.token$().isEmpty);
   accounts$: WritableSignal<Credential> = signal(CredentialUtilService.getEmpty());
   private readonly isAuthenticatedHandler = effect(() => this.handleAuthenticatedChange(this.isAuthenticated$()));
@@ -32,9 +33,9 @@ export class SecurityService {
   signUp(payload: SignUpPayload): Observable<ApiResponse> {
     return this.api.post(APIURIPublic.SIGN_UP, {...payload, socialLogin: false}).pipe(
       tap( (response: ApiResponse)=> {
-      // if success then goToDashboard and save token
-      if (response.result) {
-        this.router.navigate( [AppNode.REDIRECT_TO_PUBLIC]).then();
+        // if success then goToDashboard and save token
+        if (response.result) {
+          this.router.navigate( [AppNode.REDIRECT_TO_PUBLIC]).then();
         }
       }),
     );

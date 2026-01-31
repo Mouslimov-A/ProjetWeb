@@ -1,0 +1,153 @@
+/* --- LISTE DES CONVERSATIONS --- */
+.create-conversation {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+
+  input {
+    flex: 1;
+    padding: 12px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    outline: none;
+    &:focus { border-color: #4f46e5; }
+  }
+
+  button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 0 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+}
+
+.conversation {
+  background: white;
+  max-width: 800px;
+  margin: 0 auto 15px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  font-family: sans-serif;
+
+  &:hover {
+    border-color: #4f46e5;
+    transform: translateX(5px);
+  }
+
+  h2 { font-size: 1.1rem; margin: 0 0 5px 0; color: #1f2937;}
+  p { margin: 0; color: #9ca3af; font-size: 0.85rem;}
+}
+
+
+/* --- INTERFACE DE MESSAGES (CHAT) --- */
+.messages-container {
+  background-color: #ffffff;
+  height: 60vh; /* Hauteur fixe pour scroller */
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 16px 16px 0 0; /* Arrondi en haut */
+  box-shadow: 0 -5px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+  border: 1px solid #f3f4f6;
+
+  /* Scrollbar custom jolie */
+  &::-webkit-scrollbar { width: 6px; }
+  &::-webkit-scrollbar-thumb { background: #d1d5db; border-radius: 10px;}
+}
+
+.message {
+  max-width: 70%;
+  padding: 12px 18px;
+  border-radius: 18px;
+  font-family: sans-serif;
+  line-height: 1.4;
+  position: relative;
+
+  /* Par défaut : message reçu (gris à gauche) */
+  align-self: flex-start;
+  background-color: #f3f4f6;
+  color: #1f2937;
+  border-bottom-left-radius: 4px; /* Effet bulle */
+
+  h4 {
+    margin: 0 0 5px 0;
+    font-size: 0.75rem;
+    color: #4f46e5;
+  }
+
+  small {
+    display: block;
+    text-align: right;
+    font-size: 0.65rem;
+    margin-top: 5px;
+    opacity: 0.6;
+  }
+
+  /* Message envoyé par moi (Bleu à droite) */
+  &.my-message {
+    align-self: flex-end;
+    background-color: #4f46e5;
+    color: white;
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 4px; /* Effet bulle inversé */
+
+    h4 { display: none; } /* On cache le nom pour nos messages */
+    small { color: white; opacity: 0.8; }
+  }
+}
+
+.send-message {
+  background: white;
+  padding: 15px;
+  border-radius: 0 0 16px 16px; /* Arrondi en bas */
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  border: 1px solid #f3f4f6;
+  border-top: none;
+
+  textarea {
+    flex: 1;
+    border: 1px solid #e5e7eb;
+    border-radius: 25px;
+    padding: 12px 20px;
+    height: 50px;
+    resize: none;
+    outline: none;
+    font-family: sans-serif;
+
+    &:focus { border-color: #4f46e5; }
+  }
+
+  button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+
+    &:hover { transform: scale(1.1); }
+  }
+}

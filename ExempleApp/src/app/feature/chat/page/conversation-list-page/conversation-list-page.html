@@ -1,0 +1,19 @@
+<h1>Mes conversations</h1>
+
+<div class="create-conversation">
+  <input
+    type="text"
+    [(ngModel)]="newConversationUsername"
+    placeholder="Nom d'utilisateur..."
+  />
+  <button (click)="onCreateConversation()">Nouvelle conversation</button>
+</div>
+
+@for (conversation of conversationList(); track conversation.conversationId) {
+  <article [routerLink]="['./conversation', conversation.conversationId]" class="conversation">
+    <h2>{{ getOtherUser(conversation).username }}</h2>
+    <p>Dernière activité : {{ conversation.updatedAt | date:'short' }}</p>
+  </article>
+} @empty {
+  <p>Aucune conversation</p>
+}

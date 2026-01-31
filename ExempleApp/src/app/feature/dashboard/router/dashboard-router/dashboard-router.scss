@@ -1,0 +1,114 @@
+:host {
+  display: grid;
+  height: 100vh; /* Prend tout l'écran */
+  /* La colonne de gauche fait 260px, celle de droite prend le reste */
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: auto auto 1fr; /* Header, Profile, Nav prennent leur place */
+  grid-template-areas:
+    "logo content"
+    "user content"
+    "menu content";
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden; /* Empêche le scroll global */
+}
+
+/* 1. LA SIDEBAR (Gauche) */
+/* On applique un style commun au fond de la sidebar pour simuler une colonne unie */
+header, h3, nav {
+  background-color: #ffffff;
+  padding-left: 30px;
+  padding-right: 30px;
+  border-right: 1px solid #f3f4f6; /* Séparation subtile */
+}
+
+/* Le Logo "Dashboard" */
+header {
+  grid-area: logo;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #4f46e5; /* Bleu Indigo */
+  padding-top: 40px;
+  padding-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+/* Le Profil utilisateur */
+h3 {
+  grid-area: user;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #9ca3af; /* Gris clair */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  padding-bottom: 30px;
+}
+
+/* La Navigation */
+nav {
+  grid-area: menu;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Les liens (Accueil, Conversations) */
+  li a {
+    display: block;
+    text-decoration: none;
+    color: #4b5563; /* Gris texte */
+    font-weight: 500;
+    padding: 12px 15px;
+    border-radius: 12px;
+    transition: all 0.2s;
+
+    &:hover {
+      background-color: #f3f4f6;
+      color: #111827;
+      padding-left: 20px; /* Petit effet de mouvement */
+    }
+
+    /* Si tu as une classe active (routerLinkActive), tu peux ajouter ça :
+    &.active { background-color: #eff6ff; color: #4f46e5; }
+    */
+  }
+
+  /* Bouton Logout (style spécial) */
+  button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+    width: 100%;
+    color: #ef4444; /* Rouge discret */
+    border-radius: 12px;
+    margin-bottom: 20px; /* On le décolle un peu ou on le met en bas */
+    order: 10; /* Astuce Flexbox: ça force le logout tout en bas de la liste */
+    transition: background 0.2s;
+
+    &:hover {
+      background-color: #fef2f2;
+    }
+  }
+}
+
+/* 2. LE CONTENU PRINCIPAL (Droite) */
+section {
+  grid-area: content;
+  background-color: #f9fafb; /* Fond global gris très léger */
+  padding: 40px;
+  overflow-y: auto; /* C'est ICI que ça scroll */
+
+  /* Scrollbar jolie pour le contenu */
+  &::-webkit-scrollbar { width: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb { background-color: #d1d5db; border-radius: 10px; border: 3px solid transparent; background-clip: content-box;}
+}

@@ -1,1 +1,51 @@
-home page
+
+<h2>Home page</h2>
+
+
+<div class="create-publication">
+  <h3>Créer une publication</h3>
+  <textarea
+    [(ngModel)]="_newPublicationContent"
+    placeholder="Écrire une publication...">
+  </textarea>
+  <button (click)="onCreatePublication()">Publier</button>
+</div>
+
+@for (publication of publicationList(); track publication.publicationId) {
+  <article class="publication">
+    <h4>username : {{ publication.username }}</h4>
+    <p>date: {{ publication.createdAt | date }}</p>
+
+    <p>{{ publication.content }}</p>
+    <p (click)="onLike(publication.publicationId)" style="cursor: pointer">❤️ {{ publication.likeCount }} like(s)</p>
+    <button (click)="onShowComments(publication.publicationId)">Afficher commentaires</button>
+
+    @if (_selectedPublicationId() === publication.publicationId) {
+
+      <!-- Formulaire de création -->
+      <div class="create-comment">
+        <textarea
+          [(ngModel)]="_newCommentContent"
+          placeholder="Écrire un commentaire...">
+        </textarea>
+        <button (click)="onCreateComment(publication.publicationId)">Publier</button>
+      </div>
+
+      <!-- Liste des commentaires -->
+      @for (commentaire of commentaireList(); track commentaire.commentaireId) {
+        <div class="commentaire">
+          <div>
+            <h4>username : {{ commentaire.credential.username }}</h4>
+            <button (click)="onDeleteComment(commentaire.commentaireId, publication.publicationId)">Supprimer</button>
+          </div>
+          <p>date : {{ commentaire.createdAt | date }}</p>
+          <p>{{ commentaire.content }}</p>
+        </div>
+      }
+
+    }
+
+  </article>
+}
+
+

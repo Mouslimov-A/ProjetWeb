@@ -10,12 +10,8 @@ export const DashboardRoutes: Routes= [
         loadComponent: ()=> import('./page').then (p =>p.DashboardHomePage)
       },
       {
-        path: 'member',
-         loadChildren: ()=> import('../member').then (p =>p.memberRoutes)
-      },
-      {
-        path: 'product',
-        loadChildren: ()=> import('../product').then (p =>p.productRoutes)
+        path: 'chat',
+        loadChildren: ()=> import('../chat/chat.routes').then (p =>p.chatRoutes)
       }
     ]
   },

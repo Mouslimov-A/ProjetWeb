@@ -1,5 +1,5 @@
 <div class="form-wrapper">
-  <h1>Welcome back</h1>
+  <h1>Bienvenue</h1>
   @if (errors$().length > 0) {
     @for (error of errors$(); track $index) {
       <p>{{ error.control }} {{ error.error }} ('{{ error.value }}')</p>
@@ -11,7 +11,7 @@
       <app-float-input [config]="passwordFloatInputConfig"/>
     </div>
   </form>
-  <button (click)="submit()">Envoyer</button>
+  <button (click)="submit()">Se connecter</button>
 
-  <button routerLink="/public/signup">s'inscrire</button>
+  <button routerLink="/public/signup">S'inscrire</button>
 </div>

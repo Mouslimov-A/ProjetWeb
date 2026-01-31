@@ -1,0 +1,165 @@
+/* Titres globaux */
+h2, h3 {
+  color: #111827;
+  font-family: sans-serif;
+  font-weight: 700;
+  margin-left: 10px;
+}
+
+/* Zone de création de post */
+.create-publication {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  margin-bottom: 30px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+
+  textarea {
+    width: 100%;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 15px;
+    font-family: sans-serif;
+    outline: none;
+    resize: vertical;
+    min-height: 80px;
+    box-sizing: border-box; /* Important pour ne pas dépasser */
+
+    &:focus {
+      border-color: #4f46e5;
+      background-color: #f9fafb;
+    }
+  }
+
+  button {
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    float: right; /* Met le bouton à droite */
+  }
+
+  /* Hack pour nettoyer le float du bouton */
+  &::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+}
+
+/* Style des cartes de publication */
+.publication {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  margin-bottom: 25px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: sans-serif;
+
+  h4 {
+    margin: 0;
+    color: #1f2937;
+    font-size: 1.1rem;
+  }
+
+  /* Date */
+  p:nth-child(2) {
+    color: #9ca3af;
+    font-size: 0.8rem;
+    margin-top: 5px;
+  }
+
+  /* Contenu du message */
+  p:nth-child(3) {
+    color: #374151;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin: 20px 0;
+  }
+
+  /* Bouton Like */
+  p[style*="cursor: pointer"] {
+    display: inline-block;
+    color: #ef4444; /* Rouge doux */
+    font-weight: 600;
+    margin-right: 20px;
+    transition: transform 0.1s;
+
+    &:active { transform: scale(1.2); }
+  }
+
+  /* Bouton afficher commentaires */
+  button {
+    background: transparent;
+    border: 1px solid #d1d5db;
+    color: #6b7280;
+    padding: 6px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.85rem;
+
+    &:hover {
+      border-color: #4f46e5;
+      color: #4f46e5;
+    }
+  }
+
+  /* SECTION COMMENTAIRES (Quand ouverte) */
+  .create-comment {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f3f4f6;
+    display: flex;
+    gap: 10px;
+
+    textarea {
+      flex: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      padding: 10px 15px;
+      height: 45px;
+      resize: none;
+      outline: none;
+    }
+
+    button {
+      background: #4f46e5;
+      color: white;
+      border: none;
+    }
+  }
+
+  .commentaire {
+    background-color: #f9fafb; /* Fond gris très léger */
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+
+      h4 { font-size: 0.9rem; }
+
+      button { /* Supprimer commentaire */
+        border: none;
+        color: #ef4444;
+        font-size: 0.75rem;
+        padding: 0;
+        &:hover { text-decoration: underline; background: none; }
+      }
+    }
+
+    p { margin: 5px 0; font-size: 0.95rem; }
+  }
+}
