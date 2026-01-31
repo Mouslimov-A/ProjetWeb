@@ -7,10 +7,12 @@ import { configManager } from '@common/config/config.manager';
 import { SecurityModule } from '../security';
 import { APP_GUARD } from '@nestjs/core';
 import { JwtGuard } from '../security/jwt/jwt.guard';
+import {SocialModule} from "../social/social.module";
+import {ChatModule} from "../chat/chat.module";
 
 
 @Module({
-  imports: [SecurityModule, TypeOrmModule.forRoot(configManager.getTypeOrmConfig())],
+  imports: [SecurityModule, SocialModule, ChatModule, TypeOrmModule.forRoot(configManager.getTypeOrmConfig())],
   controllers: [AppController],
   providers: [AppService, { provide: APP_GUARD, useClass: JwtGuard }],
 
